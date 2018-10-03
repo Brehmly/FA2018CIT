@@ -9,7 +9,7 @@ abstract class Model {
 
   public function __construct() {
     //We will revisit this later
-    
+
   }
 
   public function __set($name,$value) {

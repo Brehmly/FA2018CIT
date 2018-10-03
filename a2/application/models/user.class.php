@@ -22,11 +22,11 @@ class user extends Model{
 
 function getName() {
   return array (
-    'userID'=>$this->$userID,
-    'firstName'=>$this->$firstName,
-    'lastName'=>$this->$lastName,
-    'email'=>$this->$email,
-    'role'=>$this->$role
+    'userID'=>$this->userID,
+    'firstName'=>$this->firstName,
+    'lastName'=>$this->lastName,
+    'email'=>$this->email,
+    'role'=>$this->role
   );
 }
 }
