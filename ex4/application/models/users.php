@@ -28,7 +28,7 @@ class Users extends Model{
 	}
 
 	public function isAdmin(){
-		if(isset($this->user_type == '1')){
+		if($this->user_type == '1') {
 			return true;
 		} else {
 			return false;
@@ -45,21 +45,21 @@ class Users extends Model{
 
 	public function checkUser($email, $password){
 		$sql = 'SELECT email, password FROM users WHERE email = ?';
-		$results = $this->db-getrow($sql, array($email));
+		$results = $this->db->getrow($sql, array($email));
 		$user = $results;
 		return $user;
 	}
 
 	public function getUserFromEmail($email){
 		$sql = 'SELECT * FROM users WHERE email = ?';
-		$results = $this->db-getrow($sql, array($email));
+		$results = $this->db->getrow($sql, array($email));
 		$user = $results;
 		return $user;
 	}
 
 	public function getUserFromID($uID){
 		$sql = 'SELECT * FROM users WHERE uID = ?';
-		$results = $this->db-getrow($sql, array($uID));
+		$results = $this->db->getrow($sql, array($uID));
 		$user = $results;
 		return $user;
 	}
@@ -100,21 +100,21 @@ class Users extends Model{
 
 	//JENNIFER's addUser method
 
-	public function addUser($data){
-		var_dump($data)
-		$uID = $_POST["post_uID"];
-		$email = $_POST["post_email"];
-		$password = $_POST['post_password'];
-		$fname = $_POST['post_fname'];
-		$lname = $_POST['post_lname'];
+//	public function addUser($data){
+	//	var_dump($data)
+		//$uID = $_POST["post_uID"];
+		//$email = $_POST["post_email"];
+		//$password = $_POST['post_password'];
+		//$fname = $_POST['post_fname'];
+		//$lname = $_POST['post_lname'];
 
-		$sql="INSERT INTO users (email, password, first_name, last_name) VALUES (?,?)";
+		//$sql="INSERT INTO users (email, password, first_name, last_name) VALUES (?,?)";
 		/* $sql="INSERT INTO users (email, password, first_name, last_name) VALUES ('".$email."','".$password."','".$fname."','".$lname."')"; */
-		$this->db->execute($sql,$data);
-		$message = 'User added.';
-		return $message;
+		//$this->db->execute($sql,$data);
+		//$message = 'User added.';
+		//return $message;
 
-	}
+	//}
 
 }
 ?>

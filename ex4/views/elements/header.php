@@ -48,15 +48,17 @@
       <li><a href="<?php echo BASE_URL?>members/">Members</a></li>
           </ul>
     <?php
-    if($u->isRegistered())
-    {
+    $this->userObject = new Users();
+
+
+    if(isset($_SESSION['uID'])){
     ?>
     <ul class="nav pull-right">
       <li class= "dropdown">
         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-          <?php echo $u->getUserName();?><b class="caret"></b></a>
+          <?php echo $this->userObject->getUserName();?><b class="caret"></b></a>
         <ul class="dropdown-menu" role="menu">
-        <?php if($u->isAdmin()){
+        <?php if($this->userObject->isAdmin()){
         ?>
         <li><a href="<?php echo BASE_URL?>addpost/">Add Post</a></li>
         <?php } ?>

@@ -1,7 +1,8 @@
 <?php
 
 // Display errors in production mode
-ini_set('display_errors', 0);
+error_reporting(-1);
+ini_set('display_errors', 'On');
 
 // let's get started
 require 'application/router.php';

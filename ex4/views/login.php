@@ -7,7 +7,7 @@ include('elements/header.php');?>
 
    <?php if(isset($error)){ ?>
 		 <div class="alert alert-danger">
-			 <?php eecho $error;?>
+			 <?php echo $error;?>
 		 </div>
 	<?php } ?>
    <?php include('elements/login_form.php');?>
