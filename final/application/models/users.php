@@ -65,7 +65,7 @@ class Users extends Model{
 	}
 
 	public function getUser($uID){
-		$sql = 'SELECT uID, first_name, last_name, email, password FROM users WHERE uID = ?';
+		$sql = 'SELECT uID, first_name, last_name, email, password, active FROM users WHERE uID = ?';
 
 		// perform query
 		$results = $this->db->getrow($sql, array($uID));
@@ -77,7 +77,7 @@ class Users extends Model{
 		if($limit > 0){
 			$numusers = ' LIMIT '.$limit;
 		}
-		$sql = 'SELECT uID, first_name, last_name, email, password FROM users'.$numusers;
+		$sql = 'SELECT uID, first_name, last_name, email, password, active, user_type FROM users'.$numusers;
 
 		// perform query
 		$results = $this->db->execute($sql);
@@ -98,6 +98,45 @@ class Users extends Model{
 		return $message;
 	}
 
+	public function editUser($data){
+			$sql = "UPDATE users SET email = ?, first_name = ?, last_name = ? where uID = ?";
+			$this->db->execute($sql, array($data['email'],$data['first_name'],$data['last_name'],$data['uID']));
+			$message = 'User updated.';
+			return $message;
+	}
+
+	public function editUserWithPassword($data){
+		$sql = "UPDATE users SET email = ?, first_name = ?, last_name = ?, password = ? where uID = ?";
+		$this->db->execute($sql, array($data['email'],$data['first_name'],$data['last_name'],$data['password'],$data['uID']));
+			$message = 'User updated.';
+			return $message;
+	}
+	public function isActive($uID){
+			$sql='Select active from users WHERE uID = ?';
+			$results = $this->db->getrow($sql, array($uID));
+			//Pre-init
+			$result = false;
+			if($results['active'] == 0){
+					$result = false;
+			} else {
+					$result = true;
+				}
+			return $result;
+
+	}
+
+	public function activateUser($uID){
+			$sql = 'UPDATE users SET active = 1 where uID = ?';
+			$this->db->execute($sql,array($uID));
+			$message = "User Approved";
+			return $message;
+	}
+	public function deleteUser($uID){
+			$sql = 'DELETE FROM users where uID = ?';
+			$this->db->execute($sql,array($uID));
+			$message = "User Deleted";
+			return $message;
+	}
 
 
 }

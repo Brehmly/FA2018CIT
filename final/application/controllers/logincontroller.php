@@ -19,18 +19,22 @@ class LoginController extends Controller{
 			 $userInfo = $this->userObject->getUserFromEmail($_POST['email']);
 			 $_SESSION['uID'] = $userInfo['uID'];
 
+       $result=$this->userObject->isActive($userInfo['uID']);
+
+       if($result){
+
        if(strlen($_SESSION['redirect']) > 0){
 			   $view = $_SESSION['redirect'];
 			   unset($_SESSION['redirect']);
 			   header('Location: '.BASE_URL.$view);
 		   } else {
-           header('Location: '.BASE_URL);
-
-		   }
+           header('Location: '.BASE_URL); }
        } else {
-           $this->set('error','Wrong password / email combination');
-       }
+           $this->set('error', 'Your account has not been approved yet'); }
+       } else {
+           $this->set('error','Wrong password / email combination'); }
    }
+ 
 
     public function logout(){
       unset($_SESSION["uID"]);

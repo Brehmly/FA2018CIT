@@ -11,8 +11,10 @@
     	<?php echo $message?>
     </div>
   <?php }
+	$this->category = new Categories();
+	
 		foreach($categories as $key=>$value){
-			echo "<h3>".$value."</h3>";
+			echo "<h3>".$key."</h3>";
 			echo "<a class='btn btn-warning' href='".BASE_URL."categories/edit/".$key."'>Edit Category</a><hr>";
 		}
 	 ?>

@@ -3,6 +3,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo BASE_URL?>views/js/jquery.js"></script>
     <script src="<?php echo BASE_URL?>views/js/bootstrap.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js'></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <?php
        $this->userObject = new Users();
        if($this->userObject->isAdmin()) {

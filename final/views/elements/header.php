@@ -9,6 +9,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+
+
     <link href="<?php echo BASE_URL?>views/css/bootstrap.min.css" rel="stylesheet">
     <style>
       body {
@@ -64,7 +66,9 @@
         <li><a href="<?php echo BASE_URL?>manageposts/add/">Add Post</a></li>
         <li><a href="<?php echo BASE_URL?>categories/add/">Manage Categories</a></li>
         <li><a href="<?php echo BASE_URL?>manageposts/">Manage posts</a></li>
+        <li><a href="<?php echo BASE_URL?>manageusers/approve">Manage users</a></li>
         <?php } ?>
+        <li><a href="<?php echo BASE_URL?>members/profile/<?php echo $_SESSION['uID'];?>">My Profile</a></li>
         <li><a href="<?php echo BASE_URL?>login/logout/">Log Out</a></li>
         </ul>
       </li>

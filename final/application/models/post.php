@@ -1,6 +1,7 @@
 <?php
 class Post extends Model{
 
+
     function getPost($pID){
     $sql = 'SELECT p.pID, p.title, p.content, p.uid, p.categoryid, p.date, c.name as name, u.first_name, u.last_name FROM posts p
 		INNER JOIN categories c on c.categoryid = p.categoryid
@@ -43,23 +44,17 @@ class Post extends Model{
 
     public function getAllPosts($limit = 0){
         if($limit > 0){
-
             $numposts = ' LIMIT '.$limit;
         }
-
         $sql =  'SELECT p.pID, p.title, p.content, p.uid, p.categoryid, p.date, c.name as name, u.first_name, u.last_name FROM posts p
 		INNER JOIN categories c on c.categoryid = p.categoryid
 		INNER JOIN users u on u.uid = p.uid'.$numposts;
-
         // perform query
         $results = $this->db->execute($sql);
-
         while ($row=$results->fetchrow()) {
             $posts[] = $row;
         }
-
         return $posts;
-
     }
 
     public function addPost($data){
@@ -79,7 +74,7 @@ class Post extends Model{
         return $message;
     }
     public function deletePost($pID) {
-      
+
         $sql='DELETE from posts WHERE pID=?';
         $this->db->execute($sql, $pID);
         $message = 'Post Removed';

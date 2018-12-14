@@ -44,6 +44,13 @@ class CategoriesController extends Controller{
 		$outcome = $this->categoryObject->getCategories();
 		$this->set('categories',$outcome);
 	}
+	public function delete(){
+		$this->categoryObject = new Categories;
+		$cID = $_POST['categoryID'];
+		$this->categoryObject->deleteCategories($cID);
+		$this->set('message', 'Category Deleted');
+
+}
 
 }
 ?>

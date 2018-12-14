@@ -25,7 +25,7 @@ date_default_timezone_set('America/Indiana/Indianapolis');?>
 
           <label for="category">Category</label>
           <select class="input-sm" name="category" id="category" required="category">
-          <option value="">-- Select Category --</option>
+          <option value="" required>-- Select Category --</option>
 
           <?php
             foreach($categories as $key => $value){
@@ -42,7 +42,7 @@ date_default_timezone_set('America/Indiana/Indianapolis');?>
           </select>
 
           <label>Content</label>
-          <textarea id="tinyeditor" name="content" style="width:556px;height: 200px"><?php echo $content?></textarea>
+          <textarea id="tinyeditor" name="content" style="width:556px;height: 200px" required ><?php echo $content?></textarea>
     			<br/>
           <input type="hidden" name="pID" value="<?php echo $pID?>"/>
 

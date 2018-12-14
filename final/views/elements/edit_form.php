@@ -1,4 +1,4 @@
-<form id="registration_form" action="<?php echo BASE_URL;?>register/<?php echo $task?>" method="post">
+<form id="registration_form" action="<?php echo BASE_URL;?>members/update<?php echo $task?>" method="post">
 
 <fieldset>
 <legend>Register Today!</legend>
@@ -14,11 +14,11 @@
 <input type="text" class="txt" id="email" name="email" value="<?php echo $email;?>" maxlength="100" required="email" />
 <br />
 
-<label for="password">Password: <?=REQFIELD?></label>
-<input type="password" class="txt" id="password" name="password" value="<?php echo $password;?>" maxlength="100" required="password" />
+<label for="password">Password: </label>
+<input type="password" class="txt" id="password" name="password" value="<?php echo $password;?>" maxlength="100" />
 
-<label for="passwordConfirmation">Password Confirmation: <?=REQFIELD?></label>
-<input type="password" class="txt" id="passwordConfirmation" name="passwordConfirmation"  maxlength="100" required="password" />
+<label for="passwordConfirmation">Password Confirmation: </label>
+<input type="password" class="txt" id="passwordConfirmation" name="passwordConfirmation"  maxlength="100" />
 <span id = "message"></span>
 <br />
 <br>

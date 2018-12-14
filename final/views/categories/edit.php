@@ -15,10 +15,15 @@
     }?>
 
 	 <form action="<?php echo BASE_URL ?>categories/update" method="post">
-	 	<label for="category">New Category</label>
+	 	<label for="category">Edit Category Name</label>
 		<input type="text" name="category" class="input-sm" id="category" value = "<?php echo $name ?>" required="category">
 		<input type="submit" class='btn btn-primary' value="Submit">
 	 </form>
+	 <form action="<?php echo BASE_URL?>categories/delete/" method="post">
+		<label for = "category"><?php echo $name?></label>
+		<input type="submit" value="Delete">
+	 </form><hr>
+
 
 </div>
 

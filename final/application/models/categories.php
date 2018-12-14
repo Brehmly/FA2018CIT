@@ -1,6 +1,6 @@
 <?php
 class Categories extends Model{
-	
+
 	public function getCategories(){
 		$sql = 'SELECT categoryID,name from categories';
 		$categories2 = array();
@@ -19,24 +19,21 @@ class Categories extends Model{
 		$categories = $categories2;
 		return $categories;
 	}
-	
+
 	public function getCategory($cID){
 		$sql = 'SELECT categoryID, name FROM categories WHERE categoryID=?';
 		$outcome = $this->db->getrow($sql,array($cID));
 
 		return $outcome;
-		
+
 		}
 
-	public function update($cID,$name){
-		$categoryID = $this->db->qstr($cID);
-		$categoryName = $this->db->qstr($name);
-
-		$sql = "UPDATE categories SET name=$categoryName WHERE categoryID = $categoryID";
-		$results = $this->db->execute($sql);
-
-		return $results;
-		}
+		function update($data){
+		        $sql='UPDATE categories SET name = ? WHERE categoryID = ?';
+		        $this->db->execute($sql,$data);
+		        $message = 'Category changed.';
+		        return $message;
+		    }
 
 	public function addCategory($category){
 		$sql = "INSERT INTO categories (name) VALUES (?)";
@@ -44,7 +41,13 @@ class Categories extends Model{
 
 		return $outcome;
 		}
-		
-}
 
+
+	public function deleteCategories($cID){
+		$sql ="DELETE FROM categories WHERE categoryID = ?";
+		$this->db->execute($sql, array());
+		$message = "Category updated.";
+		return $message;
+	}
+}
 ?>
