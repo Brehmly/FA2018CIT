@@ -27,10 +27,10 @@ class MembersController extends Controller{
 		//if pass is not empty it will insert a new passhash password if it is empty it will not insert a password to database so it keeps original
 		if(!empty($password)){
 			$passhash = password_hash($password,PASSWORD_DEFAULT);
-			$data = array('uID'=>$this->userObject->getUserFromID(),'first_name'=>$_POST['first_name'],'last_name'=>$_POST['last_name'],'email'=>$_POST['email'], 'password'=>$passhash);
+			$data = array('uID'=>$this->userObject->getUserFromID($uID),'first_name'=>$_POST['first_name'],'last_name'=>$_POST['last_name'],'email'=>$_POST['email'], 'password'=>$passhash);
 			$this->postObject->editUserWithPassword($data);
 			}else{
-				$data = array('uID'=>$this->userObject->getUserFromID(),'first_name'=>$_POST['first_name'],'last_name'=>$_POST['last_name'],'email'=>$_POST['email']);
+				$data = array('uID'=>$this->userObject->getUserFromID($uID),'first_name'=>$_POST['first_name'],'last_name'=>$_POST['last_name'],'email'=>$_POST['email']);
 				$this->userObject->editUser($data);
 			}
 			$this->set('message','password set');

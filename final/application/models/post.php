@@ -43,19 +43,22 @@ class Post extends Model{
     }
 
     public function getAllPosts($limit = 0){
-        if($limit > 0){
-            $numposts = ' LIMIT '.$limit;
-        }
-        $sql =  'SELECT p.pID, p.title, p.content, p.uid, p.categoryid, p.date, c.name as name, u.first_name, u.last_name FROM posts p
-		INNER JOIN categories c on c.categoryid = p.categoryid
-		INNER JOIN users u on u.uid = p.uid'.$numposts;
-        // perform query
-        $results = $this->db->execute($sql);
-        while ($row=$results->fetchrow()) {
-            $posts[] = $row;
-        }
-        return $posts;
-    }
+
+		if($limit > 0){
+
+			$numposts = ' LIMIT '.$limit;
+		}else{$numposts = ' '; }
+
+		$sql =  'SELECT pID, title, content, date, posts.uID, posts.categoryID, categories.name, first_name, last_name FROM posts INNER JOIN users ON posts.uID = users.uID INNER JOIN categories ON posts.categoryID = categories.categoryID'.$numposts;
+
+		// perform query
+		$results = $this->db->execute($sql);
+
+		while ($row=$results->fetchrow()) {
+			$posts[] = $row;
+		}
+		return $posts;
+	}
 
     public function addPost($data){
 

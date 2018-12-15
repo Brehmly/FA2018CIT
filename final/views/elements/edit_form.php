@@ -1,4 +1,4 @@
-<form id="registration_form" action="<?php echo BASE_URL;?>members/update<?php echo $task?>" method="post">
+<form id="registration_form" action="<?php echo BASE_URL;?>members/update" method="post">
 
 <fieldset>
 <legend>Register Today!</legend>

@@ -99,8 +99,8 @@ class Users extends Model{
 	}
 
 	public function editUser($data){
-			$sql = "UPDATE users SET email = ?, first_name = ?, last_name = ? where uID = ?";
-			$this->db->execute($sql, array($data['email'],$data['first_name'],$data['last_name'],$data['uID']));
+		$sql='INSERT INTO users (email,first_name,last_name) VALUES (?,?,?)';
+		$this->db->execute($sql,$data);
 			$message = 'User updated.';
 			return $message;
 	}
